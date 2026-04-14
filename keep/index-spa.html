@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Livenow Studio — 신사 · 압구정 렌탈 스튜디오</title>
+<meta name="description" content="라이브나우 스튜디오. 서울 신사 · 압구정 렌탈 스튜디오. 07:00–23:00 연중무휴.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+
+<style>
+/* ── TOKENS ───────────────────────────────────── */
+:root{
+  --ink:#141414;
+  --sub:#6e6e6e;
+  --line:#e8e6e2;
+  --paper:#f6f5f2;
+  --content:#fefefe;
+  --white:#ffffff;
+  --gold:#b89466;
+  --ease:cubic-bezier(0.16, 1, 0.3, 1);
+  --t:0.5s var(--ease);
+  --nav-h:72px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+html{-webkit-font-smoothing:antialiased}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Pretendard Variable','Pretendard','Geist',sans-serif;
+  font-weight:400;
+  font-size:15px;
+  line-height:1.7;
+  letter-spacing:-0.005em;
+  overflow-x:hidden;
+  word-break:keep-all;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+::selection{background:var(--ink);color:var(--paper)}
+
+.kr{word-break:keep-all;line-break:strict}
+.mono{font-family:'Geist Mono',ui-monospace,monospace;font-weight:400;letter-spacing:0}
+.display{font-family:'Geist','Pretendard Variable',sans-serif;font-weight:500;letter-spacing:-0.035em}
+
+/* ── NAV ──────────────────────────────────────── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  height:var(--nav-h);
+  padding:0 44px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(246,245,242,0.86);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid transparent;
+  transition:border-color var(--t),background var(--t);
+}
+.nav.scrolled{border-bottom-color:var(--line);background:rgba(246,245,242,0.96)}
+
+.brand{
+  font-family:'Geist','Pretendard Variable',sans-serif;
+  font-size:15px;font-weight:600;letter-spacing:-0.01em;
+  display:flex;align-items:center;gap:10px;color:var(--ink);
+}
+.brand .dot{width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.brand em{font-style:normal;color:var(--sub);font-weight:400;margin-left:2px}
+
+.nav-links{display:flex;gap:34px;list-style:none}
+.nav-links button{
+  font-family:'Geist','Pretendard Variable',sans-serif;
+  font-size:13.5px;font-weight:450;letter-spacing:-0.005em;
+  color:var(--sub);padding:6px 0;position:relative;
+  transition:color var(--t);
+}
+.nav-links button::after{
+  content:"";position:absolute;left:50%;bottom:-2px;width:0;height:1px;
+  background:var(--ink);transition:all var(--t);transform:translateX(-50%);
+}
+.nav-links button:hover,.nav-links button.on{color:var(--ink)}
+.nav-links button.on::after{width:18px}
+
+.nav-right{display:flex;align-items:center;gap:18px}
+.nav-phone{
+  font-family:'Geist Mono',monospace;font-size:12px;color:var(--sub);
+  letter-spacing:0;transition:color var(--t);
+}
+.nav-phone:hover{color:var(--ink)}
+.nav-burger{display:none;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;align-items:center;justify-content:center}
+
+/* ── PAGE SYSTEM ──────────────────────────────── */
+.page{display:none;padding-top:var(--nav-h);min-height:100dvh;background:var(--content);animation:fade 0.7s var(--ease)}
+.page.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* ── HOME: 1028-STYLE MINIMAL ─────────────────── */
+.page.home.active{
+  display:flex;flex-direction:column;
+  min-height:calc(100dvh - var(--nav-h));
+}
+
+.home-hero{
+  flex:1;
+  padding:0 44px;
+  padding-top:48px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:64px;
+}
+
+.home-image{
+  width:100%;
+  aspect-ratio:16/7;
+  max-height:72vh;
+  overflow:hidden;
+  background:#dcdad5;
+  position:relative;
+}
+.home-image img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 14s var(--ease);transform:scale(1.04);
+}
+.home.active .home-image img{transform:scale(1)}
+.home-image::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 60%,rgba(20,20,20,0.18));
+  pointer-events:none;
+}
+
+.home-body{
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:80px;align-items:end;
+  padding-bottom:72px;
+}
+.home-title{
+  font-family:'Geist','Pretendard Variable',sans-serif;
+  font-size:clamp(56px,9.2vw,148px);
+  font-weight:500;
+  line-height:0.94;
+  letter-spacing:-0.05em;
+  color:#3a3a3a;
+}
+.home-title em{
+  font-style:normal;font-weight:400;color:var(--sub);display:block;
+  font-size:0.28em;letter-spacing:0;margin-top:18px;line-height:1.4;
+}
+.home-aside{
+  display:flex;flex-direction:column;gap:30px;
+  padding-bottom:14px;
+}
+.home-desc{
+  font-size:15.5px;line-height:1.9;color:var(--ink);
+  max-width:44ch;
+}
+.home-desc strong{font-weight:600}
+.home-meta{
+  display:flex;gap:36px;flex-wrap:wrap;
+  font-family:'Geist Mono',monospace;font-size:11px;color:var(--sub);
+  padding-top:22px;border-top:1px solid var(--line);
+}
+.home-meta span{display:flex;align-items:center;gap:8px}
+.home-meta span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold)}
+
+.home-cta{
+  display:inline-flex;align-items:center;gap:14px;
+  align-self:flex-start;
+  padding:18px 32px;
+  background:var(--ink);color:var(--paper);
+  border-radius:999px;
+  font-family:'Geist','Pretendard Variable',sans-serif;
+  font-size:13.5px;font-weight:500;letter-spacing:-0.005em;
+  transition:all var(--t);
+}
+.home-cta iconify-icon{font-size:16px;transition:transform var(--t)}
+.home-cta:hover{background:var(--gold);color:var(--white)}
+.home-cta:hover iconify-icon{transform:translateX(4px)}
+
+.section{padding:72px 44px 100px}
+
+/* ── ABOUT / BRANCHES ─────────────────────────── */
+.intro{
+  display:grid;grid-template-columns:1fr 1.5fr;gap:80px;
+  margin-bottom:100px;
+}
+.intro-label{
+  font-family:'Geist Mono',monospace;font-size:11px;color:var(--sub);
+  display:flex;align-items:center;gap:12px;
+}
+.intro-label::before{content:"";width:22px;height:1px;background:var(--gold)}
+.intro p{
+  font-family:'Geist','Pretendard Variable',sans-serif;
+  font-size:clamp(22px,2.4vw,30px);font-weight:400;
+  line-height:1.55;letter-spacing:-0.02em;color:var(--ink);
+  max-width:26ch;
+}
+
+.branch{
+  margin-bottom:120px;
+}
+.branch:last-child{margin-bottom:20px}
+.branch-head{
+  display:grid;grid-template-columns:auto 1fr auto;gap:28px;
+  align-items:baseline;margin-bottom:36px;
+  padding-bottom:22px;border-bottom:1px solid var(--line);
+}
+.branch-no{
+  font-family:'Geist Mono',monospace;font-size:12px;color:var(--gold);
+}
+.branch-name{
+  font-family:'Geist','Pretendard Variable',sans-serif;
+  font-size:clamp(28px,3.2vw,44px);font-weight:500;
+  letter-spacing:-0.035em;line-height:1;
+}
+.branch-name em{font-style:normal;color:var(--sub);font-weight:400;font-size:0.5em;margin-left:14px;letter-spacing:-0.01em}
+.branch-addr{
+  font-family:'Geist Mono',monospace;font-size:11px;color:var(--sub);
+  text-align:right;line-height:1.7;
+}
+
+/* Gallery grid — varies per branch */
+.gal{display:grid;gap:8px}
+.gal img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s var(--ease)}
+.gal-item{position:relative;overflow:hidden;background:#dcdad5}
+.gal-item:hover img{transform:scale(1.04)}
+
+.gal-one{grid-template-columns:repeat(3,1fr);gap:8px}
+.gal-one .gal-item{aspect-ratio:4/3}
+
+.sinsa-empty{
+  border:1px dashed var(--line);
+  padding:60px 40px;text-align:center;
+  color:var(--sub);font-size:13px;
+  font-family:'Geist Mono',monospace;
+}
+
+/* ── RENTAL ──────────────────────────────────── */
+.r-wrap{max-width:1080px;margin:0 auto}
+.r-block{margin-bottom:64px}
+.r-block:last-child{margin-bottom:0}
+.r-label{
+  font-family:'Geist Mono',monospace;font-size:11px;color:var(--sub);
+  text-transform:uppercase;margin-bottom:22px;
+  display:flex;align-items:center;gap:12px;
+}
+.r-label::before{content:"";width:20px;height:1px;background:var(--gold)}
+
+/* 기본 요금 행 — 썸네일 없음 */
+.r-row{
+  display:grid;grid-template-columns:1.4fr 1fr auto;gap:28px;
+  padding:22px 0;align-items:baseline;
+  border-bottom:1px solid var(--line);
+}
+.r-row:first-of-type{border-top:1px solid var(--line)}
+.r-row .rn{font-size:15px;color:var(--ink);font-weight:500}
+.r-row .rn small{display:block;font-size:12px;color:var(--sub);margin-top:3px;font-weight:400}
+.r-row .rv{
+  font-family:'Geist','Pretendard Variable',sans-serif;
+  font-size:22px;font-weight:500;letter-spacing:-0.025em;color:var(--ink);
+  font-feature-settings:"tnum";
+}
+.r-row .rv span{color:var(--sub);font-size:13px;margin-left:6px;font-weight:400}
+.r-row .rt{
+  font-family:'Geist Mono',monospace;font-size:10px;
+  color:var(--sub);padding:5px 11px;border:1px solid var(--line);border-radius:999px;
+}
+.r-row .rt.free{color:var(--gold);border-color:var(--gold)}
+
+/* 장비 행 — 썸네일 포함 */
+.eq-row{
+  display:grid;grid-template-columns:140px 1.4fr 1fr auto;gap:28px;
+  padding:18px 0;align-items:center;
+  border-bottom:1px solid var(--line);
+}
+.eq-row:first-of-type{border-top:1px solid var(--line)}
+.eq-thumb{
+  width:140px;height:100px;
+  background:#efede8;border:1px solid var(--line);
+  overflow:hidden;display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.eq-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.eq-thumb.empty{
+  border:1px dashed #cfccc5;background:transparent;
+  font-family:'Geist Mono',monospace;font-size:9.5px;color:var(--sub);
+  text-align:center;letter-spacing:0;padding:8px;
+  flex-direction:column;gap:3px;
+}
+.eq-thumb.empty::before{
+  content:"+";font-size:18px;color:#cfccc5;font-weight:400;line-height:0.8;
+}
+.eq-thumb.empty::after{
+  content:attr(data-name);color:var(--sub);
+}
+.eq-row .rn{font-size:15px;color:var(--ink);font-weight:500}
+.eq-row .rn small{display:block;font-size:12px;color:var(--sub);margin-top:3px;font-weight:400}
+.eq-row .rv{
+  font-family:'Geist','Pretendard Variable',sans-serif;
+  font-size:20px;font-weight:500;letter-spacing:-0.025em;color:var(--ink);
+  font-feature-settings:"tnum";
+}
+.eq-row .rv span{color:var(--sub);font-size:13px;margin-left:6px;font-weight:400}
+.eq-row .rt{
+  font-family:'Geist Mono',monospace;font-size:10px;
+  color:var(--sub);padding:5px 11px;border:1px solid var(--line);border-radius:999px;
+}
+.eq-row .rt.free{color:var(--gold);border-color:var(--gold)}
+
+/* ── GUIDE ───────────────────────────────────── */
+.g-list{max-width:1080px;margin:0 auto}
+.g-item{
+  display:grid;grid-template-columns:120px 1fr;gap:60px;
+  padding:44px 0;border-top:1px solid var(--line);
+}
+.g-list .g-item:last-child{border-bottom:1px solid var(--line)}
+.g-no{
+  font-family:'Geist Mono',monospace;font-size:13px;color:var(--gold);
+  padding-top:4px;
+}
+.g-body h3{
+  font-family:'Geist','Pretendard Variable',sans-serif;
+  font-size:22px;font-weight:500;letter-spacing:-0.025em;margin-bottom:14px;
+}
+.g-body p{font-size:14px;color:var(--sub);line-height:1.95;max-width:60ch}
+
+/* ── BOOKING ─────────────────────────────────── */
+.b-wrap{max-width:1040px;margin:0 auto}
+.b-actions{
+  display:flex;gap:14px;flex-wrap:wrap;margin-bottom:72px;
+}
+.b-btn{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:18px 30px;border-radius:999px;
+  font-family:'Geist','Pretendard Variable',sans-serif;
+  font-size:13px;font-weight:500;letter-spacing:-0.005em;
+  border:1px solid var(--line);background:var(--white);color:var(--ink);
+  transition:all var(--t);
+}
+.b-btn iconify-icon{font-size:17px;transition:transform var(--t)}
+.b-btn:hover{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+.b-btn:hover iconify-icon{transform:translateX(3px)}
+.b-btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.b-btn.primary:hover{background:var(--gold);border-color:var(--gold);color:var(--white)}
+
+.b-steps{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line);
+}
+.b-step{
+  background:var(--content);padding:38px 30px 34px;
+  display:flex;flex-direction:column;gap:14px;min-height:240px;
+  transition:background var(--t);
+}
+.b-step:hover{background:var(--white)}
+.b-step .n{
+  font-family:'Geist Mono',monospace;font-size:12px;color:var(--gold);
+}
+.b-step h5{
+  font-family:'Geist','Pretendard Variable',sans-serif;
+  font-size:17px;font-weight:500;letter-spacing:-0.02em;line-height:1.35;
+}
+.b-step p{font-size:13px;color:var(--sub);line-height:1.8}
+.b-step .bank{
+  font-family:'Geist Mono',monospace;font-size:10.5px;line-height:1.8;
+  color:var(--ink);padding-top:10px;margin-top:auto;border-top:1px solid var(--line);
+}
+
+/* ── CONTACT ─────────────────────────────────── */
+.c-wrap{max-width:1200px;margin:0 auto}
+.c-info{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line);margin-bottom:100px;
+}
+.c-card{background:var(--content);padding:36px 32px}
+.c-card h4{
+  font-family:'Geist Mono',monospace;font-size:10.5px;color:var(--gold);
+  text-transform:uppercase;margin-bottom:18px;
+  display:flex;align-items:center;gap:10px;
+}
+.c-card h4::before{content:"";width:16px;height:1px;background:var(--gold)}
+.c-card p{font-size:13.5px;color:var(--ink);line-height:1.95}
+.c-card p strong{font-weight:600;display:block;margin-bottom:2px}
+.c-card .sub{color:var(--sub);font-size:12.5px;display:block;margin-top:3px}
+
+.c-park-title{
+  font-family:'Geist','Pretendard Variable',sans-serif;
+  font-size:clamp(32px,4.2vw,56px);font-weight:500;letter-spacing:-0.04em;
+  margin-bottom:36px;line-height:1;
+}
+.c-park-title em{font-style:normal;color:var(--sub);font-weight:400}
+.c-park{
+  display:grid;grid-template-columns:220px 1fr;gap:40px;
+  padding:28px 0;border-bottom:1px solid var(--line);
+}
+.c-park:first-of-type{border-top:1px solid var(--line)}
+.c-park h5{font-size:14px;font-weight:500;color:var(--ink)}
+.c-park p{font-size:13px;color:var(--sub);line-height:1.9}
+
+/* ── FOOTER ──────────────────────────────────── */
+.foot{
+  padding:70px 44px 36px;border-top:1px solid var(--line);
+  background:var(--paper);
+}
+.foot-top{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:60px;
+  padding-bottom:50px;border-bottom:1px solid var(--line);
+}
+.foot-brand .brand{font-size:18px;margin-bottom:16px}
+.foot-brand p{font-size:13px;color:var(--sub);line-height:1.85;max-width:32ch}
+.foot-col h6{
+  font-family:'Geist Mono',monospace;font-size:10px;color:var(--sub);
+  text-transform:uppercase;margin-bottom:16px;
+}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.foot-col li{font-size:13px;color:var(--ink)}
+.foot-col li small{display:block;font-size:11px;color:var(--sub);margin-top:2px;font-family:'Geist Mono',monospace}
+.foot-col a{transition:color var(--t)}
+.foot-col a:hover{color:var(--gold)}
+
+.foot-bot{
+  padding-top:26px;display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:14px;
+}
+.foot-bot p{font-family:'Geist Mono',monospace;font-size:10.5px;color:var(--sub)}
+.foot-bot .social{display:flex;gap:10px}
+.foot-bot .social a{
+  width:34px;height:34px;border:1px solid var(--line);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transition:all var(--t);color:var(--ink);
+}
+.foot-bot .social a:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+
+/* ── REVEAL ──────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal-d1{transition-delay:0.1s}
+.reveal-d2{transition-delay:0.2s}
+.reveal-d3{transition-delay:0.3s}
+
+/* ── RESPONSIVE ──────────────────────────────── */
+@media (max-width:1024px){
+  .nav{padding:0 24px}
+  .home-hero,.ph,.section,.foot{padding-left:24px;padding-right:24px}
+  .home-body{grid-template-columns:1fr;gap:48px;padding-bottom:56px}
+  .intro{grid-template-columns:1fr;gap:28px;margin-bottom:70px}
+  .c-info{grid-template-columns:1fr 1fr}
+  .foot-top{grid-template-columns:1fr 1fr}
+  .b-steps{grid-template-columns:repeat(2,1fr)}
+  .eq-row{grid-template-columns:110px 1fr auto;gap:18px}
+  .eq-row .rv{grid-column:2;font-size:17px}
+  .eq-thumb{width:110px;height:80px}
+}
+@media (max-width:720px){
+  :root{--nav-h:60px}
+  body{font-size:14.5px}
+  .nav{padding:0 18px}
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  .nav-phone{display:none}
+
+  .home-hero{padding-top:28px;gap:40px}
+  .home-image{aspect-ratio:4/5;max-height:70vh}
+  .home-title{font-size:clamp(48px,12vw,78px)}
+  .home-body{padding-bottom:40px;gap:32px}
+
+  .section{padding:56px 18px 80px}
+
+  .branch-head{grid-template-columns:1fr;gap:10px}
+  .branch-addr{text-align:left}
+
+  .gal-one{grid-template-columns:1fr}
+
+  .r-row{grid-template-columns:1fr auto;gap:12px}
+  .r-row .rt{grid-column:1/-1;justify-self:start}
+
+  .g-item{grid-template-columns:1fr;gap:14px;padding:32px 0}
+
+  .b-steps{grid-template-columns:1fr}
+  .eq-row{grid-template-columns:90px 1fr;gap:14px;padding:14px 0}
+  .eq-row .rn{grid-column:2}
+  .eq-row .rv{grid-column:2;font-size:16px}
+  .eq-row .rt{grid-column:2;justify-self:start}
+  .eq-thumb{width:90px;height:70px;grid-row:span 3}
+
+  .c-info{grid-template-columns:1fr}
+  .c-park{grid-template-columns:1fr;gap:6px}
+
+  .foot{padding:56px 18px 30px}
+  .foot-top{grid-template-columns:1fr;gap:34px;padding-bottom:38px}
+  .foot-bot{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────── -->
+<header class="nav" id="nav">
+  <a class="brand" href="#" onclick="go('home');return false;">
+    <span class="dot"></span> Livenow <em>Studio</em>
+  </a>
+  <nav>
+    <ul class="nav-links">
+      <li><button data-nav="home" class="on" onclick="go('home')">Home</button></li>
+      <li><button data-nav="about" onclick="go('about')">About</button></li>
+      <li><button data-nav="rental" onclick="go('rental')">Rental</button></li>
+      <li><button data-nav="guide" onclick="go('guide')">Guide</button></li>
+      <li><button data-nav="booking" onclick="go('booking')">Booking</button></li>
+      <li><button data-nav="contact" onclick="go('contact')">Contact</button></li>
+    </ul>
+  </nav>
+  <div class="nav-right">
+    <a class="nav-phone" href="tel:02-000-0000">02—000—0000</a>
+    <button class="nav-burger" aria-label="menu"><iconify-icon icon="solar:hamburger-menu-linear" style="font-size:18px"></iconify-icon></button>
+  </div>
+</header>
+
+<!-- ── HOME ────────────────────────────────────── -->
+<section id="pg-home" class="page home active">
+  <div class="home-hero">
+    <div class="home-image reveal">
+      <img src="images/apgujeong/p01.jpeg" alt="Livenow Studio">
+    </div>
+    <div class="home-body">
+      <h1 class="home-title reveal reveal-d1">
+        Livenow studio
+        <em class="kr">서울 신사 · 압구정 렌탈 스튜디오 — 매일 07시부터 23시까지 운영합니다.</em>
+      </h1>
+      <aside class="home-aside reveal reveal-d2">
+        <p class="home-desc kr">
+          <strong>라이브나우 스튜디오</strong>는 신사와 압구정 두 지점에서 운영되는
+          렌탈 스튜디오입니다. 호리존과 기본 조명·스탠드·책상을 제공하며,
+          매일 이른 아침부터 촬영을 시작하실 수 있습니다.
+        </p>
+        <button class="home-cta" onclick="go('booking')">
+          예약 문의 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+        </button>
+        <div class="home-meta">
+          <span>Mon–Sun</span>
+          <span>07:00 – 23:00</span>
+          <span>02 Branches · Seoul</span>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ───────────────────────────────────── -->
+<section id="pg-about" class="page">
+  <div class="section">
+    <!-- 신사점 -->
+    <article class="branch reveal">
+      <div class="branch-head">
+        <span class="branch-no">Branch 01</span>
+        <h3 class="branch-name">Sinsa <em class="kr">신사점</em></h3>
+        <span class="branch-addr kr">서울 서초구 강남대로 101길 36<br>지하 1층</span>
+      </div>
+      <div class="sinsa-empty kr">Sinsa gallery — 이미지 준비중 (images/sinsa/ 폴더에 사진을 추가해 주세요)</div>
+    </article>
+
+    <!-- 압구정점 -->
+    <article class="branch reveal">
+      <div class="branch-head">
+        <span class="branch-no">Branch 02</span>
+        <h3 class="branch-name">Apgujeong <em class="kr">압구정점</em></h3>
+        <span class="branch-addr kr">서울 강남구 논현로 813<br>영석빌딩 지하 2층</span>
+      </div>
+      <div class="gal gal-one">
+        <div class="gal-item"><img src="images/apgujeong/p01.jpeg" alt="압구정점"></div>
+        <div class="gal-item"><img src="images/apgujeong/p02.jpeg" alt="압구정점"></div>
+        <div class="gal-item"><img src="images/apgujeong/p03.jpeg" alt="압구정점"></div>
+        <div class="gal-item"><img src="images/apgujeong/p04.jpeg" alt="압구정점"></div>
+        <div class="gal-item"><img src="images/apgujeong/p05.jpeg" alt="압구정점"></div>
+        <div class="gal-item"><img src="images/apgujeong/p06.jpeg" alt="압구정점"></div>
+        <div class="gal-item"><img src="images/apgujeong/p07.jpeg" alt="압구정점"></div>
+        <div class="gal-item"><img src="images/apgujeong/p08.jpeg" alt="압구정점"></div>
+        <div class="gal-item"><img src="images/apgujeong/p09.jpeg" alt="압구정점"></div>
+        <div class="gal-item"><img src="images/apgujeong/p10.jpeg" alt="압구정점"></div>
+        <div class="gal-item"><img src="images/apgujeong/p11.jpeg" alt="압구정점"></div>
+        <div class="gal-item"><img src="images/apgujeong/p12.jpeg" alt="압구정점"></div>
+        <div class="gal-item"><img src="images/apgujeong/p13.jpeg" alt="압구정점"></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ── RENTAL ──────────────────────────────────── -->
+<!--
+  장비 이미지 추가 방법:
+  1) images/equipment/ 폴더에 이미지 파일을 넣어주세요
+     예: forza300b.jpg, stand.jpg, desk.jpg, floppy-gobo.jpg, tv.jpg, backdrop.jpg
+  2) 아래 해당 .eq-thumb 의 class "empty" 를 제거하고
+     안에 <img src="images/equipment/파일명.jpg" alt="..."> 를 넣어주세요
+-->
+<section id="pg-rental" class="page">
+  <div class="section">
+    <div class="r-wrap">
+      <div class="r-block reveal">
+        <span class="r-label">Base</span>
+        <div class="r-row"><div class="rn kr">시간당 요금</div><div class="rv">30,000 <span>KRW</span></div><span class="rt">/ 1h</span></div>
+        <div class="r-row"><div class="rn kr">최소 예약 시간</div><div class="rv">4 <span>hours</span></div><span class="rt">Minimum</span></div>
+        <div class="r-row"><div class="rn kr">기준 인원</div><div class="rv">3 <span>pax</span></div><span class="rt">base</span></div>
+        <div class="r-row"><div class="rn kr">인원 추가<small>기준 초과 1인 / 1시간</small></div><div class="rv">5,000 <span>KRW</span></div><span class="rt">/ +1</span></div>
+      </div>
+
+      <div class="r-block reveal">
+        <span class="r-label">Equipment · Free</span>
+        <div class="eq-row">
+          <div class="eq-thumb empty" data-name="Forza 300b"></div>
+          <div class="rn">Forza 300b<small class="kr">스튜디오 라이트</small></div>
+          <div class="rv">6 <span>units</span></div>
+          <span class="rt free">Free</span>
+        </div>
+        <div class="eq-row">
+          <div class="eq-thumb empty" data-name="Stand"></div>
+          <div class="rn kr">스탠드</div>
+          <div class="rv kr">다수</div>
+          <span class="rt free">Free</span>
+        </div>
+        <div class="eq-row">
+          <div class="eq-thumb empty" data-name="Desk"></div>
+          <div class="rn kr">책상</div>
+          <div class="rv kr">다수</div>
+          <span class="rt free">Free</span>
+        </div>
+      </div>
+
+      <div class="r-block reveal">
+        <span class="r-label">Equipment · Paid</span>
+        <div class="eq-row">
+          <div class="eq-thumb empty" data-name="Floppy Gobo"></div>
+          <div class="rn kr">플로피 고보</div>
+          <div class="rv">10,000 <span>KRW</span></div>
+          <span class="rt">Paid</span>
+        </div>
+        <div class="eq-row">
+          <div class="eq-thumb empty" data-name="TV"></div>
+          <div class="rn">TV</div>
+          <div class="rv">10,000 <span>KRW</span></div>
+          <span class="rt">Paid</span>
+        </div>
+        <div class="eq-row">
+          <div class="eq-thumb empty" data-name="Backdrop"></div>
+          <div class="rn kr">배경지<small>1장 기준</small></div>
+          <div class="rv">10,000 <span>KRW</span></div>
+          <span class="rt">Paid</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GUIDE ───────────────────────────────────── -->
+<section id="pg-guide" class="page">
+  <div class="section">
+    <div class="g-list">
+      <div class="g-item reveal"><span class="g-no">01</span><div class="g-body"><h3 class="kr">예약 방법</h3><p class="kr">홈페이지의 스케줄을 확인한 뒤 원하시는 날짜와 시간을 예약 메뉴의 링크 또는 해당 연락처(02-000-0000)로 문의해 주세요. 예약 확정은 입금 후 문자로 안내됩니다.</p></div></div>
+      <div class="g-item reveal"><span class="g-no">02</span><div class="g-body"><h3 class="kr">입장 및 퇴장</h3><p class="kr">예약 시간 5분 전 도착을 권장합니다. 퇴장 시 원상 복구 및 촬영 장비 정리 후 체크아웃 해 주세요.</p></div></div>
+      <div class="g-item reveal"><span class="g-no">03</span><div class="g-body"><h3 class="kr">시설 이용</h3><p class="kr">시설 관리, 범죄 예방, 출입 인원 확인 등을 위한 CCTV가 설치되어 있습니다. 화장실·탈의실 외 모든 구역 녹화중입니다. 실내 출입 시 슬리퍼 착용 필수이며, 호리존 위는 슬리퍼 벗고 이용 바랍니다. 호리존·시설 파손 또는 오염 시 복구 비용 35만원이 청구됩니다. 호리존 화이트 페인팅은 월 1회 정기적으로 진행되며, 정기 스케줄 외 칠 요청은 추가 비용 35만원이 발생합니다.</p></div></div>
+      <div class="g-item reveal"><span class="g-no">04</span><div class="g-body"><h3 class="kr">취소 및 환불</h3><p class="kr">이용 48시간 전 취소 시 전액 환불. 24시간 전 취소 시 50% 환불. 당일 취소는 환불 불가합니다.</p></div></div>
+      <div class="g-item reveal"><span class="g-no">05</span><div class="g-body"><h3 class="kr">금지 사항</h3><p class="kr">음식물 반입 금지(음료 가능). 흡연 금지. 타인을 침해하는 콘텐츠 촬영 금지.</p></div></div>
+      <div class="g-item reveal"><span class="g-no">06</span><div class="g-body"><h3 class="kr">제공 장비</h3><p class="kr">배경지, 스탠드, 반사판, 조명 기본 제공. 카메라 및 렌즈는 별도 렌탈 가능합니다.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BOOKING ─────────────────────────────────── -->
+<section id="pg-booking" class="page">
+  <div class="section">
+    <div class="b-wrap">
+      <div class="b-actions reveal">
+        <a class="b-btn primary" href="" target="_blank">
+          <iconify-icon icon="solar:chat-round-dots-linear"></iconify-icon> 카카오톡 채널
+        </a>
+        <a class="b-btn" href="tel:02-000-0000">
+          <iconify-icon icon="solar:phone-linear"></iconify-icon> 02 — 000 — 0000
+        </a>
+        <button class="b-btn" onclick="go('rental')">
+          <iconify-icon icon="solar:dollar-linear"></iconify-icon> 요금 확인
+        </button>
+      </div>
+
+      <div class="b-steps reveal">
+        <div class="b-step"><span class="n">Step 1</span><h5 class="kr">예약 가능일 확인</h5><p class="kr">스케줄에서 원하는 지점과 날짜, 시간을 확인합니다.</p></div>
+        <div class="b-step"><span class="n">Step 2</span><h5 class="kr">채널 · 전화 문의</h5><p class="kr">지점 / 연락처 / 날짜 / 시간 / 인원을 알려 주세요.</p></div>
+        <div class="b-step"><span class="n">Step 3</span><h5 class="kr">가능 여부 회신</h5><p class="kr">담당자 확인 후 가능 여부와 유의사항을 회신드립니다.</p></div>
+        <div class="b-step"><span class="n">Step 4</span><h5 class="kr">전액 입금</h5><p class="kr">안내 계좌로 이용 금액을 입금해 주세요.</p><div class="bank">IBK 기업은행<br>274-099358-04-019<br>(주) 라이브나우</div></div>
+        <div class="b-step"><span class="n">Step 5</span><h5 class="kr">예약 확정</h5><p class="kr">확정 문자와 함께 스케줄에 이름이 표기됩니다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ─────────────────────────────────── -->
+<section id="pg-contact" class="page">
+  <div class="section">
+    <div class="c-wrap">
+      <div class="c-info reveal">
+        <div class="c-card">
+          <h4>Location</h4>
+          <p class="kr"><strong>신사점</strong>서울 서초구 강남대로 101길 36<span class="sub">지하 1층</span></p>
+          <p class="kr" style="margin-top:16px"><strong>압구정점</strong>서울 강남구 논현로 813<span class="sub">영석빌딩 지하 2층</span></p>
+        </div>
+        <div class="c-card">
+          <h4>Hours</h4>
+          <p class="kr"><strong>월 – 일</strong>07:00 – 23:00<span class="sub">연중무휴</span></p>
+        </div>
+        <div class="c-card">
+          <h4>Reach</h4>
+          <p><strong>02 — 000 — 0000</strong><span class="sub">Tel</span></p>
+          <p style="margin-top:10px"><strong>studio_livenow@gmail.com</strong><span class="sub">Email</span></p>
+          <p style="margin-top:10px"><strong>@studio_livenow</strong><span class="sub">Instagram</span></p>
+        </div>
+        <div class="c-card">
+          <h4>Account</h4>
+          <p><strong>IBK 기업은행</strong>274-099358-04-019<span class="sub kr">예금주 : (주) 라이브나우</span></p>
+        </div>
+      </div>
+
+      <h3 class="c-park-title reveal">주차 <em>안내.</em></h3>
+      <div class="c-park reveal"><h5 class="kr">짐 상하차 임시 정차</h5><p class="kr">별관 1층 ‘뉴매터’ 카페 앞에서 임시로 장비·짐 상하차 가능합니다.</p></div>
+      <div class="c-park reveal"><h5 class="kr">기계 주차 불가</h5><p class="kr">기계 주차장 차량 낙상 사고가 잦아 이용이 불가합니다. 모든 차량은 인근 외부 주차장을 이용해 주세요.</p></div>
+      <div class="c-park reveal"><h5 class="kr">동방 유료 민영 주차장</h5><p class="kr">서울 강남구 도산대로23길 18 신사파크빌 · 기본 30분 3,000원 / 120분 12,000원 · 도보 3분</p></div>
+      <div class="c-park reveal"><h5 class="kr">유림아트홀 주차장</h5><p class="kr">서울 강남구 압구정로28길 49 · 30분 3,000원 / 일 최대 20,000원 · 도보 4분</p></div>
+      <div class="c-park reveal"><h5 class="kr">신구초교 공영 주차장</h5><p class="kr">서울 강남구 압구정로18길 28 · 30분 1,800원 / 1시간 3,600원 · 도보 7분</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SHARED FOOTER (outside pages) ───────────── -->
+<footer class="foot">
+  <div class="foot-top">
+    <div class="foot-brand">
+      <a class="brand" href="#" onclick="go('home');return false;"><span class="dot"></span>Livenow <em>Studio</em></a>
+      <p class="kr">서울 신사 · 압구정 렌탈 스튜디오. 07:00–23:00 연중무휴.</p>
+    </div>
+    <div class="foot-col"><h6>Locations</h6><ul>
+      <li class="kr">신사점<small>서울 서초구 강남대로 101길 36 B1</small></li>
+      <li class="kr">압구정점<small>서울 강남구 논현로 813 B2</small></li>
+    </ul></div>
+    <div class="foot-col"><h6>Contact</h6><ul>
+      <li><a href="tel:02-000-0000">02 — 000 — 0000<small>07:00 – 23:00</small></a></li>
+      <li><a href="mailto:studio_livenow@gmail.com">studio_livenow@gmail.com</a></li>
+    </ul></div>
+    <div class="foot-col"><h6>Account</h6><ul>
+      <li>IBK 기업은행<small>274-099358-04-019</small></li>
+      <li class="kr">(주) 라이브나우<small>예금주</small></li>
+    </ul></div>
+  </div>
+  <div class="foot-bot">
+    <p>© 2019 Livenow Studio — Seoul</p>
+    <div class="social">
+      <a href="#" aria-label="instagram"><iconify-icon icon="solar:instagram-linear"></iconify-icon></a>
+      <a href="#" aria-label="kakao"><iconify-icon icon="solar:chat-round-dots-linear"></iconify-icon></a>
+      <a href="tel:02-000-0000" aria-label="phone"><iconify-icon icon="solar:phone-linear"></iconify-icon></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── SPA navigation ── */
+function go(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('pg-'+id).classList.add('active');
+  document.querySelectorAll('.nav-links button').forEach(b=>{
+    b.classList.toggle('on', b.dataset.nav === id);
+  });
+  window.scrollTo({top:0, behavior:'instant'});
+  initReveal();
+}
+window.go = go;
+
+/* ── Nav scrolled state ── */
+const navEl = document.getElementById('nav');
+window.addEventListener('scroll', ()=>{
+  navEl.classList.toggle('scrolled', window.scrollY > 20);
+}, {passive:true});
+
+/* ── Reveal on scroll ── */
+let io = null;
+function initReveal(){
+  if(io) io.disconnect();
+  io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:0.14, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.page.active .reveal').forEach(el=>{
+    el.classList.remove('in');
+    io.observe(el);
+  });
+}
+window.addEventListener('load', initReveal);
+</script>
+</body>
+</html>
