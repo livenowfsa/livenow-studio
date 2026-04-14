@@ -28,7 +28,7 @@
 
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%}
-html{-webkit-font-smoothing:antialiased;scrollbar-gutter:stable}
+html{-webkit-font-smoothing:antialiased}
 body{
   background:var(--ink);
   color:var(--ink);
@@ -116,7 +116,11 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .hero-slide.next{z-index:1}
 .hero-slide img{
   width:100%;height:100%;object-fit:cover;
+  transform:scale(1.08);
+  transition:transform 8s linear;
+  will-change:transform;
 }
+.hero-slide.on img{transform:scale(1)}
 
 /* overlay gradients for legibility */
 .hero::before{
@@ -652,7 +656,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 <section id="pg-home" class="page home active">
   <div class="hero">
     <div class="hero-slides" id="heroSlides">
-      <div class="hero-slide on"><img src="images/apgujeong/p01.webp" alt="" decoding="async"></div>
+      <div class="hero-slide"><img src="images/apgujeong/p01.webp" alt="" decoding="async"></div>
       <div class="hero-slide"><img src="images/apgujeong/p02.webp" alt="" decoding="async"></div>
       <div class="hero-slide"><img src="images/apgujeong/p03.webp" alt="" decoding="async"></div>
       <div class="hero-slide"><img src="images/apgujeong/p04.webp" alt="" decoding="async"></div>
@@ -899,7 +903,7 @@ function nextSlide(){
   showSlide(cur);
 }
 
-showSlide(0);
+requestAnimationFrame(()=>requestAnimationFrame(()=>showSlide(0)));
 setInterval(nextSlide, 5000);
 
 /* ── About manual carousel ── */
