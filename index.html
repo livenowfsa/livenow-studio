@@ -934,7 +934,7 @@ function aboutGo(i){
   aboutTrack.style.transform = 'translate3d(' + (-aboutIdx * slideW) + 'px,0,0)';
   if(aboutBar) aboutBar.style.width = ((aboutIdx + 1) / total * 100) + '%';
   if(aboutCur) aboutCur.textContent = String(aboutIdx + 1).padStart(2,'0');
-  if(aboutTot) aboutTot.textContent = String(total).padStart(2,'0');
+  if(aboutTot) aboutTot.textContent = String(vis.length).padStart(2,'0');
 }
 function aboutMv(dir){ aboutGo(aboutIdx + dir); }
 window.aboutMv = aboutMv;
