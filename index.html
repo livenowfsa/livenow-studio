@@ -456,11 +456,14 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 }
 .eq-row:first-of-type{border-top:1px solid var(--line)}
 .eq-thumb{
-  width:140px;height:100px;background:#efede8;border:1px solid var(--line);
+  width:140px;height:100px;background:#fff;border:1.5px solid var(--line);
   overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
   font-family:'Geist Mono',monospace;font-size:9.5px;color:var(--sub);
 }
-.eq-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.eq-thumb img{width:100%;height:100%;object-fit:contain;padding:12px;box-sizing:border-box;display:block}
+.eq-thumb.full img{padding:0;object-fit:cover}
+.eq-thumb.md img{padding:6px;transform:scale(1.05)}
+.eq-thumb.lg img{padding:0;transform:scale(1.10)}
 .eq-thumb.empty{border:1px dashed #cfccc5;background:transparent}
 .eq-thumb.empty::before{content:"+";font-size:18px;color:#cfccc5;line-height:0.8}
 .eq-thumb.empty::after{content:attr(data-name)}
@@ -775,16 +778,16 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 
       <div class="block">
         <span class="label">Equipment · Free</span>
-        <div class="eq-row"><div class="eq-thumb empty" data-name="Forza 300b"></div><div class="rn">Forza 300b<small class="kr">스튜디오 라이트</small></div><div class="rv">6 <span>유닛</span></div><span class="rt free">Free</span></div>
-        <div class="eq-row"><div class="eq-thumb empty" data-name="Stand"></div><div class="rn kr">스탠드</div><div class="rv kr">다수</div><span class="rt free">Free</span></div>
-        <div class="eq-row"><div class="eq-thumb empty" data-name="Desk"></div><div class="rn kr">책상</div><div class="rv kr">다수</div><span class="rt free">Free</span></div>
+        <div class="eq-row"><div class="eq-thumb md"><img src="images/equipment/forza300b.png" alt="Forza 300b"></div><div class="rn">Forza 300b<small class="kr">스튜디오 라이트</small></div><div class="rv">4 <span>유닛</span></div><span class="rt free">Free</span></div>
+        <div class="eq-row"><div class="eq-thumb lg"><img src="images/equipment/stand.jpg" alt="Stand"></div><div class="rn kr">스탠드</div><div class="rv kr">다수</div><span class="rt free">Free</span></div>
+        <div class="eq-row"><div class="eq-thumb"><img src="images/equipment/desk.png" alt="Desk"></div><div class="rn kr">책상</div><div class="rv kr">다수</div><span class="rt free">Free</span></div>
       </div>
 
       <div class="block">
         <span class="label">Equipment · Paid</span>
-        <div class="eq-row"><div class="eq-thumb empty" data-name="Floppy Gobo"></div><div class="rn kr">플로피 고보</div><div class="rv">10,000 <span>원</span></div><span class="rt">Paid</span></div>
-        <div class="eq-row"><div class="eq-thumb empty" data-name="TV"></div><div class="rn">TV</div><div class="rv">10,000 <span>원</span></div><span class="rt">Paid</span></div>
-        <div class="eq-row"><div class="eq-thumb empty" data-name="Backdrop"></div><div class="rn kr">배경지<small>1장 기준</small></div><div class="rv">10,000 <span>원</span></div><span class="rt">Paid</span></div>
+        <div class="eq-row"><div class="eq-thumb"><img src="images/equipment/floppygobo.jpg" alt="Floppy Gobo"></div><div class="rn kr">플로피 고보</div><div class="rv">10,000 <span>원</span></div><span class="rt">Paid</span></div>
+        <div class="eq-row"><div class="eq-thumb lg"><img src="images/equipment/tv.png" alt="TV"></div><div class="rn">TV</div><div class="rv">10,000 <span>원</span></div><span class="rt">Paid</span></div>
+        <div class="eq-row"><div class="eq-thumb full"><img src="images/equipment/bgpaper.png" alt="Backdrop"></div><div class="rn kr">배경지<small>1장 기준</small></div><div class="rv">10,000 <span>원</span></div><span class="rt">Paid</span></div>
       </div>
     </div>
   </div>
@@ -811,7 +814,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
     <h1 class="sec-title">Booking</h1>
     <div class="b-wrap">
       <div class="b-actions">
-        <a class="b-btn primary" href="" target="_blank"><iconify-icon icon="solar:dialog-linear"></iconify-icon> 카카오톡 채널</a>
+        <a class="b-btn primary" href="http://pf.kakao.com/_UerKX" target="_blank" rel="noopener"><iconify-icon icon="solar:dialog-linear"></iconify-icon> 카카오톡 채널</a>
         <a class="b-btn" href="tel:02-000-0000"><iconify-icon icon="solar:phone-linear"></iconify-icon> 02 — 000 — 0000</a>
         <button class="b-btn" onclick="go('rental')"><iconify-icon icon="solar:dollar-linear"></iconify-icon> 요금 확인</button>
       </div>
@@ -866,7 +869,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
     <p>© 2019 Studio Livenow — Seoul</p>
     <div class="social">
       <a href="https://www.instagram.com/studio_livenow" target="_blank" rel="noopener" aria-label="instagram"><span class="insta-icon" role="img" aria-label="Instagram"></span></a>
-      <a href="#" aria-label="kakao"><iconify-icon icon="solar:dialog-linear"></iconify-icon></a>
+      <a href="http://pf.kakao.com/_UerKX" target="_blank" rel="noopener" aria-label="kakao"><iconify-icon icon="solar:dialog-linear"></iconify-icon></a>
       <a href="tel:02-000-0000" aria-label="phone"><iconify-icon icon="solar:phone-linear"></iconify-icon></a>
     </div>
   </div>
