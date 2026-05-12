@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Livenow Studio — 신사 · 압구정 렌탈 스튜디오</title>
+<title>Studio Livenow — 신사 · 압구정 렌탈 스튜디오</title>
 <meta name="description" content="라이브나우 스튜디오. 서울 신사 · 압구정 렌탈 스튜디오. 07:00–23:00 연중무휴.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
 <style>
@@ -32,7 +32,7 @@ html{-webkit-font-smoothing:antialiased}
 body{
   background:var(--ink);
   color:var(--ink);
-  font-family:'Pretendard Variable','Pretendard','Geist',sans-serif;
+  font-family:'Pretendard Variable','Pretendard','Barlow Semi Condensed',sans-serif;
   font-weight:400;
   font-size:15px;
   line-height:1.7;
@@ -63,17 +63,23 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   border-bottom-color:var(--line);
 }
 .brand{
-  font-family:'Geist','Pretendard Variable',sans-serif;
+  font-family:'Barlow Semi Condensed','Pretendard Variable',sans-serif;
   font-size:15px;font-weight:600;letter-spacing:-0.01em;
   display:flex;align-items:center;gap:10px;
 }
 .brand .dot{width:7px;height:7px;border-radius:50%;background:var(--gold)}
-.brand em{font-style:normal;opacity:0.65;font-weight:400;margin-left:2px}
+.brand-logo{
+  display:block;height:16px;
+  aspect-ratio:1355.4986/157.646;
+  background-color:currentColor;
+  -webkit-mask:url('images/small-logo.svg') no-repeat center / contain;
+  mask:url('images/small-logo.svg') no-repeat center / contain;
+}
 
 .nav-links{display:flex;gap:32px;list-style:none}
 .nav-links button{
-  font-family:'Geist','Pretendard Variable',sans-serif;
-  font-size:13px;font-weight:450;letter-spacing:-0.005em;
+  font-family:'Barlow Semi Condensed','Pretendard Variable',sans-serif;
+  font-size:15px;font-weight:450;letter-spacing:0.04em;
   color:inherit;opacity:0.72;padding:6px 0;position:relative;
   transition:opacity var(--t);
 }
@@ -157,13 +163,21 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   display:grid;grid-template-columns:1.4fr 1fr;gap:60px;align-items:end;
 }
 .hero-title{
-  font-family:'Geist','Pretendard Variable',sans-serif;
+  font-family:'Barlow Semi Condensed','Pretendard Variable',sans-serif;
   font-size:clamp(56px,9.5vw,152px);font-weight:600;
   line-height:0.92;letter-spacing:-0.05em;
   color:#ffffff;
   text-shadow:0 2px 40px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.4);
 }
 .hero-title em{font-style:normal;font-weight:400;color:rgba(255,255,255,0.82);display:block;font-size:0.26em;letter-spacing:0;margin-top:18px;line-height:1.5;text-shadow:0 1px 14px rgba(0,0,0,0.5)}
+.hero-logo{
+  width:clamp(200px,26vw,400px);
+  height:auto;display:block;
+  filter:drop-shadow(0 2px 40px rgba(0,0,0,0.55)) drop-shadow(0 1px 3px rgba(0,0,0,0.4));
+}
+@media (max-width:900px){
+  .hero-logo{width:clamp(170px,44vw,280px)}
+}
 .hero-aside{display:flex;flex-direction:column;gap:22px;padding-bottom:10px}
 .hero-desc{
   font-size:14.5px;line-height:1.85;color:rgba(255,255,255,0.92);
@@ -174,7 +188,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   display:inline-flex;align-items:center;gap:12px;align-self:flex-start;
   padding:16px 28px;border-radius:999px;
   background:var(--white);color:var(--ink);
-  font-family:'Geist','Pretendard Variable',sans-serif;
+  font-family:'Barlow Semi Condensed','Pretendard Variable',sans-serif;
   font-size:13px;font-weight:500;letter-spacing:-0.005em;
   transition:all var(--t);
 }
@@ -216,7 +230,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 }
 .section{padding:80px 44px 100px;max-width:1320px;margin:0 auto}
 .sec-title{
-  font-family:'Geist','Pretendard Variable',sans-serif;
+  font-family:'Barlow Semi Condensed','Pretendard Variable',sans-serif;
   font-size:clamp(42px,6vw,88px);font-weight:500;
   line-height:0.96;letter-spacing:-0.04em;
   color:var(--ink);margin-bottom:56px;
@@ -229,7 +243,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .block{margin-bottom:64px}
 .block:last-child{margin-bottom:0}
 .label{
-  font-family:'Geist','Pretendard Variable',sans-serif;
+  font-family:'Barlow Semi Condensed','Pretendard Variable',sans-serif;
   font-size:22px;font-weight:500;letter-spacing:-0.025em;color:var(--ink);
   margin-bottom:26px;
   display:flex;align-items:center;gap:14px;
@@ -241,7 +255,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .about-track .s{position:relative}
 .about-track .s .badge{
   position:absolute;bottom:8px;left:18px;z-index:3;
-  font-family:'Pretendard Variable','Geist',sans-serif;
+  font-family:'Pretendard Variable','Barlow Semi Condensed',sans-serif;
   font-size:12px;font-weight:500;letter-spacing:-0.005em;
   color:#ffffff;
   text-shadow:0 1px 12px rgba(0,0,0,0.55), 0 1px 2px rgba(0,0,0,0.4);
@@ -411,7 +425,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   font-family:'Geist Mono',monospace;font-size:12px;color:var(--gold);
 }
 .branch .bname{
-  font-family:'Geist','Pretendard Variable',sans-serif;
+  font-family:'Barlow Semi Condensed','Pretendard Variable',sans-serif;
   font-size:clamp(24px,3vw,38px);font-weight:500;letter-spacing:-0.035em;
   line-height:1.05;
 }
@@ -427,7 +441,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .r-row:first-of-type{border-top:1px solid var(--line)}
 .r-row .rn{font-size:15px;font-weight:500}
 .r-row .rn small{display:block;font-size:12px;color:var(--sub);margin-top:3px;font-weight:400}
-.r-row .rv{font-family:'Geist','Pretendard Variable',sans-serif;font-size:22px;font-weight:500;letter-spacing:-0.025em;font-feature-settings:"tnum"}
+.r-row .rv{font-family:'Barlow Semi Condensed','Pretendard Variable',sans-serif;font-size:22px;font-weight:500;letter-spacing:-0.025em;font-feature-settings:"tnum"}
 .r-row .rv span{color:var(--sub);font-size:13px;margin-left:6px;font-weight:400}
 .r-row .rt{
   font-family:'Geist Mono',monospace;font-size:10px;color:var(--sub);
@@ -452,7 +466,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .eq-thumb.empty::after{content:attr(data-name)}
 .eq-row .rn{font-size:15px;font-weight:500}
 .eq-row .rn small{display:block;font-size:12px;color:var(--sub);margin-top:3px;font-weight:400}
-.eq-row .rv{font-family:'Geist','Pretendard Variable',sans-serif;font-size:20px;font-weight:500;letter-spacing:-0.025em;font-feature-settings:"tnum"}
+.eq-row .rv{font-family:'Barlow Semi Condensed','Pretendard Variable',sans-serif;font-size:20px;font-weight:500;letter-spacing:-0.025em;font-feature-settings:"tnum"}
 .eq-row .rv span{color:var(--sub);font-size:13px;margin-left:6px;font-weight:400}
 .eq-row .rt{
   font-family:'Geist Mono',monospace;font-size:10px;color:var(--sub);
@@ -473,7 +487,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 }
 .g-item:hover{background:var(--paper)}
 .g-no{font-family:'Geist Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:0.04em}
-.g-body h3{font-family:'Geist','Pretendard Variable',sans-serif;font-size:20px;font-weight:500;letter-spacing:-0.025em;margin-bottom:8px}
+.g-body h3{font-family:'Barlow Semi Condensed','Pretendard Variable',sans-serif;font-size:20px;font-weight:500;letter-spacing:-0.025em;margin-bottom:8px}
 .g-body p{font-size:13.5px;color:var(--sub);line-height:1.9}
 
 /* ── BOOKING ── */
@@ -481,7 +495,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .b-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:72px}
 .b-btn{
   display:inline-flex;align-items:center;gap:12px;padding:18px 30px;border-radius:999px;
-  font-family:'Geist','Pretendard Variable',sans-serif;font-size:13px;font-weight:500;
+  font-family:'Barlow Semi Condensed','Pretendard Variable',sans-serif;font-size:13px;font-weight:500;
   border:1px solid var(--line);background:var(--content);color:var(--ink);transition:all var(--t);
 }
 .b-btn iconify-icon{font-size:17px;transition:transform var(--t)}
@@ -500,7 +514,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   position:relative;
 }
 .b-step .n{font-family:'Geist Mono',monospace;font-size:12px;color:var(--gold)}
-.b-step h5{font-family:'Geist','Pretendard Variable',sans-serif;font-size:17px;font-weight:500;letter-spacing:-0.02em;line-height:1.35}
+.b-step h5{font-family:'Barlow Semi Condensed','Pretendard Variable',sans-serif;font-size:17px;font-weight:500;letter-spacing:-0.02em;line-height:1.35}
 .b-step p{font-size:13px;color:var(--sub);line-height:1.8}
 .b-step .bank{font-family:'Geist Mono',monospace;font-size:10.5px;line-height:1.8;padding-top:10px;margin-top:auto;border-top:1px solid var(--line)}
 
@@ -571,11 +585,19 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   transition:color var(--t);
 }
 .c-card .reach-row:hover{color:var(--gold)}
-.c-card .reach-row:hover iconify-icon{transform:translateX(2px)}
-.c-card .reach-row iconify-icon{font-size:18px;color:var(--gold);flex-shrink:0;transition:transform var(--t)}
+.c-card .reach-row:hover iconify-icon,
+.c-card .reach-row:hover .insta-icon{transform:translateX(2px)}
+.c-card .reach-row iconify-icon,
+.c-card .reach-row .insta-icon{font-size:18px;color:var(--gold);flex-shrink:0;transition:transform var(--t)}
+.insta-icon{
+  display:inline-block;width:0.85em;height:0.85em;
+  background-color:currentColor;
+  -webkit-mask:url('images/insta.svg') no-repeat center / contain;
+  mask:url('images/insta.svg') no-repeat center / contain;
+}
 .c-card .reach-row > span{display:flex;flex-direction:column}
 .c-card .reach-row strong{font-weight:500}
-.c-park-title{font-family:'Geist','Pretendard Variable',sans-serif;font-size:clamp(32px,4.2vw,56px);font-weight:500;letter-spacing:-0.04em;margin-bottom:36px;line-height:1}
+.c-park-title{font-family:'Barlow Semi Condensed','Pretendard Variable',sans-serif;font-size:clamp(32px,4.2vw,56px);font-weight:500;letter-spacing:-0.04em;margin-bottom:36px;line-height:1}
 .c-park-title em{font-style:normal;color:var(--sub);font-weight:400}
 .c-park{display:grid;grid-template-columns:220px 1fr;gap:40px;padding:28px 0;border-bottom:1px solid var(--line)}
 .c-park:first-of-type{border-top:1px solid var(--line)}
@@ -634,7 +656,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 <!-- ── NAV ──────────────────────────────────── -->
 <header class="nav" id="nav">
   <a class="brand" href="#" onclick="go('home');return false;">
-    <span class="dot"></span> Livenow <em>Studio</em>
+    <span class="dot"></span><span class="brand-logo" role="img" aria-label="Studio Livenow"></span>
   </a>
   <nav>
     <ul class="nav-links">
@@ -675,7 +697,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 
     <div class="hero-content">
       <h1 class="hero-title">
-        Livenow studio
+        <img class="hero-logo" src="images/logo.svg" alt="Studio Livenow">
         <em class="kr">서울 신사 · 압구정 렌탈 스튜디오.</em>
       </h1>
       <aside class="hero-aside">
@@ -789,7 +811,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
     <h1 class="sec-title">Booking</h1>
     <div class="b-wrap">
       <div class="b-actions">
-        <a class="b-btn primary" href="" target="_blank"><iconify-icon icon="solar:chat-round-dots-linear"></iconify-icon> 카카오톡 채널</a>
+        <a class="b-btn primary" href="" target="_blank"><iconify-icon icon="solar:dialog-linear"></iconify-icon> 카카오톡 채널</a>
         <a class="b-btn" href="tel:02-000-0000"><iconify-icon icon="solar:phone-linear"></iconify-icon> 02 — 000 — 0000</a>
         <button class="b-btn" onclick="go('rental')"><iconify-icon icon="solar:dollar-linear"></iconify-icon> 요금 확인</button>
       </div>
@@ -813,8 +835,8 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
       <div class="c-card"><h4>Hours</h4><p class="kr"><strong>월 – 일</strong>07:00 – 23:00<span class="sub">연중무휴</span></p></div>
       <div class="c-card"><h4>Reach</h4>
         <a class="reach-row" href="tel:02-000-0000"><iconify-icon icon="solar:phone-linear"></iconify-icon><span><strong>02 — 000 — 0000</strong></span></a>
-        <a class="reach-row" href="mailto:studio_livenow@gmail.com" style="margin-top:14px"><iconify-icon icon="solar:letter-linear"></iconify-icon><span><strong>studio_livenow@gmail.com</strong></span></a>
-        <a class="reach-row" href="https://www.instagram.com/studio_livenow" target="_blank" rel="noopener" style="margin-top:14px"><iconify-icon icon="tabler:brand-instagram"></iconify-icon><span><strong>@studio_livenow</strong></span></a>
+        <a class="reach-row" href="http://pf.kakao.com/_UerKX" target="_blank" rel="noopener" style="margin-top:14px"><iconify-icon icon="solar:dialog-linear"></iconify-icon><span><strong class="kr">카카오톡 채널</strong></span></a>
+        <a class="reach-row" href="https://www.instagram.com/studio_livenow" target="_blank" rel="noopener" style="margin-top:14px"><span class="insta-icon" role="img" aria-label="Instagram"></span><span><strong>@studio_livenow</strong></span></a>
       </div>
       <div class="c-card"><h4>Account</h4><p><strong>IBK 기업은행</strong>274-099358-04-019<span class="sub kr">예금주 : (주) 라이브나우</span></p></div>
     </div>
@@ -841,10 +863,10 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 <!-- ── SHARED FOOTER ────────────────────────── -->
 <footer class="foot" id="foot">
   <div class="foot-bot">
-    <p>© 2019 Livenow Studio — Seoul</p>
+    <p>© 2019 Studio Livenow — Seoul</p>
     <div class="social">
-      <a href="#" aria-label="instagram"><iconify-icon icon="mdi:instagram"></iconify-icon></a>
-      <a href="#" aria-label="kakao"><iconify-icon icon="solar:chat-round-dots-linear"></iconify-icon></a>
+      <a href="https://www.instagram.com/studio_livenow" target="_blank" rel="noopener" aria-label="instagram"><span class="insta-icon" role="img" aria-label="Instagram"></span></a>
+      <a href="#" aria-label="kakao"><iconify-icon icon="solar:dialog-linear"></iconify-icon></a>
       <a href="tel:02-000-0000" aria-label="phone"><iconify-icon icon="solar:phone-linear"></iconify-icon></a>
     </div>
   </div>
